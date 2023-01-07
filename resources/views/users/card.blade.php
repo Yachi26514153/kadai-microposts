@@ -7,3 +7,5 @@
         <img src="{{ Gravatar::get($user->email, ['size' => 500]) }}" alt="">
     </figure>
 </div>
+{{-- フォロー／アンフォローボタン --}}
+@include('user_follow.follow_button')
