@@ -3,6 +3,8 @@
     <li><a class="link link-hover" href="{{ route('users.index') }}">Users</a></li>
     {{-- ユーザ詳細ページへのリンク --}}
     <li><a class="link link-hover" href="{{ route('users.show', Auth::user()->id) }}">{{ Auth::user()->name }}&#39;s profile</a></li>
+    {{-- ユーザ詳細ページへのリンク --}}
+    <li><a class="link link-hover" href="{{ route('users.favorites', Auth::user()->id) }}">{{ Auth::user()->name }}&#39;s favorites</a></li>
     <li class="divider lg:hidden"></li>
     {{-- ログアウトへのリンク --}}
     <li><a class="link link-hover" href="#" onclick="event.preventDefault();this.closest('form').submit();">Logout</a></li>

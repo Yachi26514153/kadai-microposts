@@ -19,7 +19,7 @@
                             {{-- 投稿内容 --}}
                             <p class="mb-0">{!! nl2br(e($micropost->content)) !!}</p>
                         </div>
-                        <div>
+                        <div class="flex gap-x-2">
                             @if (Auth::id() == $micropost->user_id)
                                 {{-- 投稿削除ボタンのフォーム --}}
                                 <form method="POST" action="{{ route('microposts.destroy', $micropost->id) }}">
@@ -27,6 +27,21 @@
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-error btn-sm normal-case" 
                                         onclick="return confirm('Delete id = {{ $micropost->id }} ?')">Delete</button>
+                                </form>
+                            @endif
+                            @if (Auth::user()->is_favorite($micropost->id))
+                                {{-- アンフォローボタンのフォーム --}}
+                                <form method="POST" action="{{ route('favorites.unfavorite', $micropost->id) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-error btn-sm normal-case" 
+                                        onclick="return confirm('Delete id = {{ $micropost->id }} ?')">Delete</button>
+                                </form>
+                            @else
+                                {{-- フォローボタンのフォーム --}}
+                                <form method="POST" action="{{ route('favorites.favorite', $micropost->id) }}">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary btn-sm normal-case">favorite</button>
                                 </form>
                             @endif
                         </div>
