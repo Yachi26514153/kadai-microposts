@@ -94,7 +94,6 @@ class UsersController extends Controller
         // フォロワー一覧ビューでそれらを表示
         return view('users.favorites', [
             'user' => $user,
-            'favorite' => $favorites,
             'microposts' => $favorites,
         ]);
     }
